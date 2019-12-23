@@ -1,0 +1,60 @@
+body {
+    overflow: hidden;
+    background: black;
+    background-repeat: no-repeat;
+    font-family: 'Satisfy', cursive;
+}
+
+.frame{
+    width: 200vw;
+    margin-top: 50vh;
+    padding-left: 15vw;
+    border-bottom: 5px solid rgb(239, 253, 253);
+}
+
+.ground{
+    color: white;
+    left: -20vw;
+    height: 1000vh;
+    width: 200vw;
+    z-index: 100;
+    background-color: black;
+}
+
+.girl:hover{
+    cursor:pointer;
+}
+
+.text{
+    color: white;
+    font-size: 30px;
+    position: absolute;
+    height: 50px;
+    width: 1000px;
+    margin-top: -18vh;
+    margin-bottom: 5vh;
+    left: 50vw;
+}
+
+.music{
+    font-size: 15px;
+    margin-left: 5px;
+}
+
+.rain {
+    z-index: -10;
+    background:-webkit-gradient(linear,0% 0%,0% 100%, from(rgb(132, 164, 199) ),          to(rgba(255, 255, 255, 0.8))  );
+    background: -moz-linear-gradient(top, rgb(110, 139, 168) 0%,      rgba(255, 255, 255, 0.8) 100%);
+    width:1px;
+    height:10px;
+    position: absolute;
+    top:0px;
+    -webkit-animation: fall .70s linear infinite;
+     -moz-animation: fall .70s linear infinite;
+    }
+    @-webkit-keyframes fall {
+    to {margin-top:1000px;}
+    }
+    @-moz-keyframes fall {
+     to {margin-top:1000px;}
+    }

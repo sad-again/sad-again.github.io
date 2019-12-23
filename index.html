@@ -1,0 +1,92 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Site</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <iframe src="Mournful_Departure.mp3" allow="autoplay" id="audio" style="display:none"></iframe>
+    </iframe> 
+    <audio id="myaudio" autoplay loop>
+        <source src="Mournful_Departure.mp3" type="audio/mp3">
+    </audio>
+    <div class="text">
+        <p class="p" data-text = ""></p>
+    </div>
+   
+    <div class="frame">
+        <img src="girl2.gif" class="girl" onclick=handleOnClick()>
+        
+    </div>
+    <div class = "ground">
+        <p class = "music">Music: Mournful Departure - Asher Fulero</p>
+    </div>
+
+    <script>
+    $('.music').hide();
+    var audio = document.getElementById('myaudio');
+    audio.volume = 0.3;
+    
+    currQuote = 0
+    var quotes = [
+        "Why was I even born?",
+        "Existence has only been suffering.",
+        "My best was never good enough.",
+        "My life is a burden I didn't choose to bear.",
+        "Just how much longer do I need to fake this smile?",
+        "I just wanted a place to belong.",
+        "I just wanted to be the most important person to someone.",
+        "But I just ended up being a failure.",
+        "When will this pain end?",
+    ]
+    $('.p').attr('data-text', quotes[currQuote])
+    for( i=1;i<300;i++) {
+        var dropLeft = (Math.floor(Math.random() * (3000 - 0 + 1)) + 0);;
+        var dropTop = (Math.floor(Math.random() * (1400 + 1000 + 1)) -1000);
+   
+        $('.frame').append('<div class="rain" id="rain'+i+'"></div>');
+        $('#rain'+i).css('left',dropLeft);
+        $('#rain'+i).css('top',dropTop);
+    }
+
+    function handleOnClick() {
+        
+        if (currQuote < quotes.length - 1) {
+            currQuote += 1
+        } else {
+            currQuote = 0
+        }
+        $('.p').attr('data-text', quotes[currQuote])
+        var text = $('.p').data('text');
+        typeWriter(quotes[currQuote], 0)
+        document.getElementById('myaudio').play();
+        $('.music').fadeIn(600);
+    }
+    
+    var text = $('.p').data('text');
+
+    function typeWriter(text, n) {
+        if (n < (text.length)) {
+            $('.p').html(text.substring(0, n+1));
+            n++;
+            if (n == text.length) {
+                console.log("HI")
+            }
+            setTimeout(function() {
+                typeWriter(text, n)
+            }, 40);
+        }
+    }
+
+    typeWriter(text, 0)
+    </script>
+</body>
+</html>
