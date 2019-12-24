@@ -1,0 +1,91 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Site</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Merienda&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <audio id="myaudio" loop>
+        <source src="Mournful_Departure.mp3" type="audio/mp3">
+    </audio>
+    <div id = "frame">
+        <div class="text">
+            <p class="p0" data-text = ""></p>
+            <p class="p1" data-text = ""></p>
+        </div>
+        
+        <img onclick=handleOnClick() class = "bgImg1" src="girltreegif.gif"/>
+        <img onclick=handleOnClick() class = "bgImg2" src="fireworks.gif"/>
+    </div>
+    
+    <script>
+        var frameIndex = 0
+        var currTextIndex = 0
+        var text = [["Click this text to begin (and to advance text henceforth).",
+        "So this is a super abridged version of a light novel I read recently.",
+        "This is Rem (beside the tree), she is a 17-year old half-elf.",
+        "Being a half-elf, she is discriminated by her peers within the village.",
+        "This is excarbated by the fact that both her parents were women.",
+        "Anyways, Rem's task within the village is to watch the sacred tree.",
+        "This is the duty assigned to her, as a way to get her out of the village.",
+        "The elves keep a tight watch on her to ensure she doesn't stir up trouble.",
+        "However, Rem longs for companionship and freedom.",
+        "One day, she decides to run away..."
+        ],
+        ["On the other side of the continent...", 
+        "Alfarez is the kind-hearted, beautiful 16-year old princess of the country.",
+        "But despite being nobility, she had never known love from her family.",
+        "This was because Alfarez was cursed on her 15th birthday by a witch.",
+        "Cursed to become a cat every night, which makes if difficult for her to marry.",
+        "She is tossed aside by her parents, and locked inside the manor.",
+        "She longs for the day in which she can undo the curse.",
+        "She spends all of her free time researching ways to reverse her affliction.",
+        "Anyways that's the start of the story, this was just to test something in JS anyways.",
+        "The light novel is called 'The Lesbian Elf and Cursed Princess'."
+        ]]
+
+        var p = '.p' + String(frameIndex);
+        $(p).html(text[frameIndex][currTextIndex]);
+        var audio = document.getElementById('myaudio');
+        audio.volume = 0.3;
+
+        function handleOnClick() {
+            document.getElementById('myaudio').play();
+            console.log(text[frameIndex][currTextIndex])
+            if (currTextIndex < text[frameIndex].length - 1){
+                currTextIndex += 1
+                var p = '.p' + String(frameIndex);
+                $(p).html(text[frameIndex][currTextIndex]);
+            } else {
+                if (frameIndex === text.length-1){
+
+                } else {
+                    var p = '.p' + String(frameIndex);
+                    $(p).fadeOut(500);
+                    frameIndex += 1
+                    currTextIndex = 0
+                    
+                    var oldimg = '.bgImg' + String(frameIndex);
+                    var newimg = '.bgImg' + String(frameIndex + 1);
+                    $(oldimg).fadeOut(1000, function(){
+                        $(newimg).fadeIn(1000);
+                        var p = '.p' + String(frameIndex);
+                        $(p).html(text[frameIndex][currTextIndex]);
+                        $(p).fadeIn(1000);
+                    });
+                }
+            }
+            
+
+            
+        }    
+    </script>
+</body>
+</html>

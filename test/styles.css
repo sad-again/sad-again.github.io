@@ -1,0 +1,42 @@
+html{
+    overflow: hidden;
+}
+body{
+    background-image: url('background.png');
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+    margin: 0px;
+    padding: 0px;
+}
+
+.bgImg1{
+    margin-left: 2vw;
+    height: 100vh;
+}
+
+.bgImg2{
+    margin-left: 2vw;
+    height: 100vh;
+    display:none;
+}
+
+p{
+    z-index: 100;
+    font-size: 200%;
+    font-family: 'Merienda', cursive;
+}
+.p0{
+
+    position:absolute;
+    top:30%;
+    left:60%;
+    width: 20%;
+}
+
+.p1{
+    display: none;
+    position:absolute;
+    top:10%;
+    left:15%;
+    width: 30%;
+}
