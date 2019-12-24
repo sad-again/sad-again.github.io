@@ -15,6 +15,9 @@
     <audio id="myaudio" loop>
         <source src="Mournful_Departure.mp3" type="audio/mp3">
     </audio>
+    <audio id="myaudio2">
+        <source src="crowd.mp3" type="audio/mp3">
+    </audio>
     <div id = "frame">
         <div class="text">
             <p class="p0" data-text = ""></p>
@@ -54,11 +57,13 @@
         var p = '.p' + String(frameIndex);
         $(p).html(text[frameIndex][currTextIndex]);
         var audio = document.getElementById('myaudio');
-        audio.volume = 0.3;
+        audio.volume = 0.2;
+        var audio2 = document.getElementById('myaudio2');
+        audio2.volume = 0.8;
 
         function handleOnClick() {
             document.getElementById('myaudio').play();
-            console.log(text[frameIndex][currTextIndex])
+
             if (currTextIndex < text[frameIndex].length - 1){
                 currTextIndex += 1
                 var p = '.p' + String(frameIndex);
@@ -71,7 +76,7 @@
                     $(p).fadeOut(500);
                     frameIndex += 1
                     currTextIndex = 0
-                    
+                    document.getElementById('myaudio2').play();
                     var oldimg = '.bgImg' + String(frameIndex);
                     var newimg = '.bgImg' + String(frameIndex + 1);
                     $(oldimg).fadeOut(1000, function(){
