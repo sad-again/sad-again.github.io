@@ -58,3 +58,24 @@ body {
     @-moz-keyframes fall {
      to {margin-top:1000px;}
     }
+
+@media screen and (max-width: 600px) {
+    .text{
+        left: 0.1vw;
+        margin-left: 10vw;
+        font-size: 150%;
+    }
+    .p{
+        margin-top: -10vh;
+        margin-left: 20vw;
+    }
+    .frame{
+        margin-left: -10vw;
+        left: 10vw;
+        padding-left: 2vw;
+    }
+    .girl{
+        height: 20vh;
+        margin-left: 15vw;
+    }
+}
